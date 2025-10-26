@@ -16,7 +16,7 @@ O sistema permite:
 - **Repository**: `PedidoRepository` e `UsuarioRepository` - Interfaces JPA para acesso aos dados.
 - **Entity**: `Pedido` e `Usuario` - Representam as tabelas do banco de dados.
 - **DTO**: `PedidoDTO` e `UsuarioDTO` - Objetos de transferência de dados.
-- **Client**: `UsuarioClient` - Feign Client para consumir o serviço do Aluno A.
+- **Client**: `UsuarioClient` - Feign Client para consumir o serviço do Aluno A (IP: 192.168.0.180:8080).
 
 ## Como Funciona
 
