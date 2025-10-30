@@ -2,39 +2,32 @@ package com.senac.pedrorogerpedroroger.dto;
 
 public class UsuarioDTO {
 
-    private String usuarioNome;
-    private String usuarioCpf;
-    private Integer usuarioStatus;
+    private String usuario_nome;
+    private String usuario_cpf;
+    private Integer usuario_status;
 
-    public UsuarioDTO() {}
 
-    public UsuarioDTO(String usuarioNome, String usuarioCpf, Integer usuarioStatus) {
-        this.usuarioNome = usuarioNome;
-        this.usuarioCpf = usuarioCpf;
-        this.usuarioStatus = usuarioStatus;
+    public String getUsuario_nome() {
+        return usuario_nome;
     }
 
-    public String getUsuarioNome() {
-        return usuarioNome;
+    public void setUsuario_nome(String usuario_nome) {
+        this.usuario_nome = usuario_nome;
     }
 
-    public void setUsuarioNome(String usuarioNome) {
-        this.usuarioNome = usuarioNome;
+    public String getUsuario_cpf() {
+        return usuario_cpf;
     }
 
-    public String getUsuarioCpf() {
-        return usuarioCpf;
+    public void setUsuario_cpf(String usuario_cpf) {
+        this.usuario_cpf = usuario_cpf;
     }
 
-    public void setUsuarioCpf(String usuarioCpf) {
-        this.usuarioCpf = usuarioCpf;
+    public Integer getUsuario_status() {
+        return usuario_status;
     }
 
-    public Integer getUsuarioStatus() {
-        return usuarioStatus;
-    }
-
-    public void setUsuarioStatus(Integer usuarioStatus) {
-        this.usuarioStatus = usuarioStatus;
+    public void setUsuario_status(Integer usuario_status) {
+        this.usuario_status = usuario_status;
     }
 }

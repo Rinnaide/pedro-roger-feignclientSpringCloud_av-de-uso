@@ -24,8 +24,8 @@ public class PedidoController {
     }
 
     @GetMapping("/usuario/{usuarioId}")
-    public ResponseEntity<List<Pedido>> visualizarPedidos(@PathVariable Long usuarioId) {
-        List<Pedido> pedidos = pedidoService.visualizarPedidosPorUsuario(usuarioId);
-        return ResponseEntity.ok(pedidos);
+    public List<PedidoDTO> buscarPedidoPorUsuario(@PathVariable int usuarioId){
+        return pedidoService.buscarPedidoPorUsuario(usuarioId);
     }
+
 }

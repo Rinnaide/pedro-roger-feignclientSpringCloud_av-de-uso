@@ -6,11 +6,12 @@ import com.senac.pedrorogerpedroroger.dto.UsuarioDTO;
 import com.senac.pedrorogerpedroroger.entity.Pedido;
 import com.senac.pedrorogerpedroroger.entity.Usuario;
 import com.senac.pedrorogerpedroroger.repository.PedidoRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,11 +23,29 @@ public class PedidoService {
     @Autowired
     private UsuarioClient usuarioClient;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    public List<PedidoDTO> buscarPedidoPorUsuario(int usuarioId){
+        List<Pedido> pedidos = this.pedidoRepository.findByUsuarioUsuarioId(usuarioId);
+        List<PedidoDTO> pedidosDTO = new ArrayList<PedidoDTO>();
+        for (Pedido pedido : pedidos) {
+            pedidosDTO.add(modelMapper.map(pedido, PedidoDTO.class));
+        }
+        return pedidosDTO;
+    }
+
+
+
+
+
+
+
     public Pedido criarPedido(PedidoDTO pedidoDTO) {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setUsuarioNome("Nome do Usuário");
-        usuarioDTO.setUsuarioCpf("12345678901");
-        usuarioDTO.setUsuarioStatus(1);
+        usuarioDTO.setUsuario_nome("Nome do Usuário");
+        usuarioDTO.setUsuario_cpf("12345678901");
+        usuarioDTO.setUsuario_status(1);
         UsuarioDTO usuarioCadastrado = usuarioClient.cadastrarUsuario(usuarioDTO);
 
         Usuario usuario = new Usuario();
@@ -41,7 +60,5 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> visualizarPedidosPorUsuario(Long usuarioId) {
-        return pedidoRepository.findByUsuarioUsuarioId(usuarioId);
-    }
+
 }

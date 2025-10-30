@@ -6,15 +6,8 @@ public class PedidoDTO {
 
     private BigDecimal pedidoValorTotal;
     private Integer pedidoStatus;
-    private Long usuarioId;
+    private int usuarioId;
 
-    public PedidoDTO() {}
-
-    public PedidoDTO(BigDecimal pedidoValorTotal, Integer pedidoStatus, Long usuarioId) {
-        this.pedidoValorTotal = pedidoValorTotal;
-        this.pedidoStatus = pedidoStatus;
-        this.usuarioId = usuarioId;
-    }
 
     public BigDecimal getPedidoValorTotal() {
         return pedidoValorTotal;
@@ -32,11 +25,11 @@ public class PedidoDTO {
         this.pedidoStatus = pedidoStatus;
     }
 
-    public Long getUsuarioId() {
+    public int getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(Long usuarioId) {
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
 }

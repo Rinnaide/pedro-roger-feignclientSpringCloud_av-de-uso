@@ -1,10 +1,9 @@
 package com.senac.pedrorogerpedroroger.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuario")
@@ -12,49 +11,58 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long usuarioId;
+    @Column(name="usuario_id")
+    private int usuarioId;
 
-    private String usuarioNome;
-    private String usuarioCpf;
-    private Integer usuarioStatus;
+    @Column(name="usuario_nome")
+    private String usuario_nome;
 
-    public Usuario() {}
+    @Column(name="usuario_cpf")
+    private String usuario_cpf;
 
-    public Usuario(String usuarioNome, String usuarioCpf, Integer usuarioStatus) {
-        this.usuarioNome = usuarioNome;
-        this.usuarioCpf = usuarioCpf;
-        this.usuarioStatus = usuarioStatus;
-    }
+    @Column(name="usuario_status")
+    private Integer usuariotatus;
 
-    public Long getUsuarioId() {
+    @OneToMany(mappedBy = "pedidoId")
+    List<Pedido> pedidos;
+
+    public int getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(Long usuarioId) {
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
 
-    public String getUsuarioNome() {
-        return usuarioNome;
+    public String getUsuario_nome() {
+        return usuario_nome;
     }
 
-    public void setUsuarioNome(String usuarioNome) {
-        this.usuarioNome = usuarioNome;
+    public void setUsuario_nome(String usuario_nome) {
+        this.usuario_nome = usuario_nome;
     }
 
-    public String getUsuarioCpf() {
-        return usuarioCpf;
+    public String getUsuario_cpf() {
+        return usuario_cpf;
     }
 
-    public void setUsuarioCpf(String usuarioCpf) {
-        this.usuarioCpf = usuarioCpf;
+    public void setUsuario_cpf(String usuario_cpf) {
+        this.usuario_cpf = usuario_cpf;
     }
 
-    public Integer getUsuarioStatus() {
-        return usuarioStatus;
+    public Integer getUsuariotatus() {
+        return usuariotatus;
     }
 
-    public void setUsuarioStatus(Integer usuarioStatus) {
-        this.usuarioStatus = usuarioStatus;
+    public void setUsuariotatus(Integer usuariotatus) {
+        this.usuariotatus = usuariotatus;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

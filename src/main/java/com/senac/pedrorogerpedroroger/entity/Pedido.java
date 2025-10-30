@@ -1,12 +1,7 @@
 package com.senac.pedrorogerpedroroger.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -16,24 +11,15 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="pedido_id")
     private Long pedidoId;
 
+
+    @Column(name="pedido_data")
     private LocalDate pedidoData;
+
+    @Column(name="pedido_valor_total")
     private BigDecimal pedidoValorTotal;
-    private Integer pedidoStatus;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-
-    public Pedido() {}
-
-    public Pedido(LocalDate pedidoData, BigDecimal pedidoValorTotal, Integer pedidoStatus, Usuario usuario) {
-        this.pedidoData = pedidoData;
-        this.pedidoValorTotal = pedidoValorTotal;
-        this.pedidoStatus = pedidoStatus;
-        this.usuario = usuario;
-    }
 
     public Long getPedidoId() {
         return pedidoId;
@@ -74,4 +60,16 @@ public class Pedido {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    @Column(name="pedido_status")
+    private Integer pedidoStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+
+
+
+
 }
