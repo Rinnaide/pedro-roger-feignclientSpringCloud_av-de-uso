@@ -1,5 +1,6 @@
 package com.senac.pedrorogerpedroroger.controller;
 
+import com.senac.pedrorogerpedroroger.Entity.Pedido;
 import com.senac.pedrorogerpedroroger.Entity.Usuario;
 import com.senac.pedrorogerpedroroger.dto.UsuarioDTO;
 import com.senac.pedrorogerpedroroger.services.UsuarioService;
@@ -22,10 +23,7 @@ public class UsuarioController {
         return usuarioService.listarUsuarios();
     }
 
-//    @GetMapping("/ObterPedidosdeCadaUsuario")
-//    public Usuario ObterPedidosdeCadaUsuario() {
-//        return usuarioService.ObterPedidosdeCadaUsuario ();
-//    }
+
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
@@ -33,5 +31,9 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-
+    @GetMapping("/listar/{usuarioId}")
+    public List<Pedido> buscarPedidosPorUsuario(@PathVariable int usuarioId) {
+        List<Pedido> pedidos = usuarioService.buscarPedidosPorUsuario(usuarioId);
+        return pedidos;
+    }
 }

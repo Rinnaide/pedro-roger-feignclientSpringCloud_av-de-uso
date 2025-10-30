@@ -22,6 +22,10 @@ public class Usuario {
     int usuario_status;
 
 
+    @OneToMany(mappedBy = "pedidoId")
+    List<Pedido> pedidos;
+
+
     public int getUsuario_id() {
         return usuario_id;
     }
@@ -61,9 +65,4 @@ public class Usuario {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-
-    @OneToMany(mappedBy = "pedidoId")
-    List<Pedido> pedidos;
-
-
 }

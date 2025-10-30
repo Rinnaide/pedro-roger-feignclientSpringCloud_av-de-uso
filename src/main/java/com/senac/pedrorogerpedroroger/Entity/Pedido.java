@@ -13,24 +13,20 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="pedido_id")
     private Long pedidoId;
 
+    @Column(name="pedido_data")
     private LocalDate pedidoData;
+
+    @Column(name="pedido_valor_total")
     private BigDecimal pedidoValorTotal;
+    @Column(name="pedido_status")
     private Integer pedidoStatus;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
-    public Pedido() {}
-
-    public Pedido(LocalDate pedidoData, BigDecimal pedidoValorTotal, Integer pedidoStatus, Usuario usuario) {
-        this.pedidoData = pedidoData;
-        this.pedidoValorTotal = pedidoValorTotal;
-        this.pedidoStatus = pedidoStatus;
-        this.usuario = usuario;
-    }
 
     public Long getPedidoId() {
         return pedidoId;
